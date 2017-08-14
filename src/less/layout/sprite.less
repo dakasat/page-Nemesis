@@ -1,0 +1,121 @@
+/*
+LESS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+At the bottom of this section, we provide information about the spritesheet itself
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@next-name: 'next';
+@next-x: 0px;
+@next-y: 0px;
+@next-offset-x: 0px;
+@next-offset-y: 0px;
+@next-width: 32px;
+@next-height: 63px;
+@next-total-width: 93px;
+@next-total-height: 63px;
+@next-image: '../img/sprite-09407779129848053.png';
+@next: 0px 0px 0px 0px 32px 63px 93px 63px '../img/sprite-09407779129848053.png' 'next';
+@prev-name: 'prev';
+@prev-x: 36px;
+@prev-y: 0px;
+@prev-offset-x: -36px;
+@prev-offset-y: 0px;
+@prev-width: 32px;
+@prev-height: 63px;
+@prev-total-width: 93px;
+@prev-total-height: 63px;
+@prev-image: '../img/sprite-09407779129848053.png';
+@prev: 36px 0px -36px 0px 32px 63px 93px 63px '../img/sprite-09407779129848053.png' 'prev';
+@s-search-name: 's-search';
+@s-search-x: 72px;
+@s-search-y: 0px;
+@s-search-offset-x: -72px;
+@s-search-offset-y: 0px;
+@s-search-width: 21px;
+@s-search-height: 22px;
+@s-search-total-width: 93px;
+@s-search-total-height: 63px;
+@s-search-image: '../img/sprite-09407779129848053.png';
+@s-search: 72px 0px -72px 0px 21px 22px 93px 63px '../img/sprite-09407779129848053.png' 's-search';
+@spritesheet-width: 93px;
+@spritesheet-height: 63px;
+@spritesheet-image: '../img/sprite-09407779129848053.png';
+@spritesheet-sprites: @next @prev @s-search;
+@spritesheet: 93px 63px '../img/sprite-09407779129848053.png' @spritesheet-sprites;
+
+/*
+The provided classes are intended to be used with the array-like variables
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+The `.sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of LESS
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: e(extract(@sprite, 10));
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

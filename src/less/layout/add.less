@@ -1,0 +1,308 @@
+// Кнопка открывашка
+
+.menu-opener {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  top: 40px;
+  left:5px;
+  user-select: none;
+}
+
+.menu-opener-inner {
+  background: #5d257c;
+  height: .5rem;
+  margin-left: .75rem;
+  margin-top: 1.75rem;
+  width: 2.5rem;
+
+  &::before,
+  &::after {
+    background: #5d257c;
+    content: '';
+    display: block;
+    height: .5rem;
+    width: 2.5rem;
+  }
+  &::before {
+    transform: translateY(-.75rem);
+  }
+  &::after {
+    transform: translateY(.25rem);
+  }
+  &.active {
+    background: transparent;
+    &::before {
+      transform: translateY(0rem) rotate(-45deg);
+    }
+    &::after {
+      transform: translateY(-.5rem) translateX(-0rem) rotate(45deg)
+    }
+  }
+}
+.menu-opener,
+.menu-opener:hover,
+.menu-opener.active,
+.menu-opener-inner,
+.menu-opener-inner::before,
+.menu-opener-inner::after,
+.menu, .menu.active {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+// Конец кнопки открывашка
+
+
+.search input[type="submit"] {
+  position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  top:50px;
+  right: 1%;
+  border: none;
+  background-color: inherit;
+  .sprite(@s-search);
+  cursor: pointer;
+  outline: none;
+}
+
+.line{
+  display: block;
+  margin: 10px 0;
+  height: 1px;
+  width: 500px;
+  background-color: #7d5196;
+}
+
+.btn-purple{
+  display: block;
+  width: 170px;
+  padding: 17px 0;
+  border:2px solid #772f9f;
+  text-transform: uppercase;
+  text-decoration: none;
+  color:#fff;
+  text-align: center;
+  &:hover{
+    color:#5d257c;
+    background-color: #fff;
+  }
+}
+
+.btn-grey{
+  display: block;
+  width: 170px;
+  padding: 17px 0;
+  border:2px solid #ededed;
+  text-transform: uppercase;
+  text-decoration: none;
+  color:#000;
+  text-align: center;
+  margin:0 auto;
+  &:hover{
+    background-color: #5d257c;
+    color:#fff;
+  }
+}
+
+// Темы слайдера
+// стрелки и точки
+
+.owl-theme-my .owl-nav { 
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; 
+}
+  .owl-theme-my .owl-nav [class*='owl-'] {
+    color: #FFF;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #fff;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px; 
+    outline: none;   
+  }
+  .owl-theme-my .owl-nav button.owl-prev{
+     position: absolute;
+     top:75px;
+     right: -155px;  
+     
+  }
+  .owl-theme-my .owl-nav .owl-prev span{
+    display: block;
+    width: 120px;
+    height: 120px;  
+    font-size: 0;
+    background-color:#fff;
+     &::before{
+      position: absolute;
+      content: "";
+      display: block;
+      width: 120px;
+      height: 120px;
+      .sprite(@prev);
+      margin:auto;
+      top: 0; 
+      left: 0; 
+      bottom: 0; 
+      right: 0;
+    }
+}
+
+  .owl-theme-my .owl-nav button.owl-next{
+     position: absolute;
+     top:285px;
+     right: -155px;     
+  }
+  .owl-theme-my .owl-nav .owl-next span{
+    display: block;
+    width: 120px;
+    height: 120px;
+    font-size: 0;   
+    background-color:#fff;
+    text-align: center;
+    margin: 0 auto;
+    &::before{
+      position: absolute;
+      display: block;
+      content: "";
+      width: 120px;
+      height: 120px;
+      .sprite(@next);   
+      margin:auto;
+      top: 0; 
+      left: 0; 
+      bottom: 0; 
+      right: 0;
+    
+}
+}
+
+.owl-theme-my .owl-nav.disabled + .owl-dots {
+  margin-top: 10px; }
+
+
+.owl-theme-my .owl-dots {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; 
+  position: absolute;
+  bottom: 30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+  .owl-theme-my .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; }
+    .owl-theme-my .owl-dots .owl-dot span {
+      width: 15px;
+      height: 15px;
+      margin: 5px 7px;
+      background: #d9d9d9;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 200ms ease;
+      border-radius: 30px; }
+    .owl-theme-my .owl-dots .owl-dot.active span, .owl-theme-my .owl-dots .owl-dot:hover span {
+      background: #5d257c; }
+
+
+
+      .owl-theme-my-2 .owl-nav { 
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; 
+}
+  .owl-theme-my-2 .owl-nav [class*='owl-'] {
+    color: #FFF;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #fff;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px; 
+    outline: none;   
+  }
+  .owl-theme-my-2 .owl-nav button.owl-prev{
+     position: absolute;
+     top:75px;
+     right: -155px;  
+     
+  }
+  .owl-theme-my-2 .owl-nav .owl-prev span{
+    display: block;
+    width: 120px;
+    height: 120px;  
+    font-size: 0;
+    background-color:#fff;
+     &::before{
+      position: absolute;
+      content: "";
+      display: block;
+      width: 150px;
+      height: 150px;
+      .sprite(@prev);
+      margin:auto;
+      top: 0; 
+      left: 0; 
+      bottom: 0; 
+      right: 0;
+    }
+    
+}
+
+  .owl-theme-my-2 .owl-nav button.owl-next{
+     position: absolute;
+     top:270px;
+     right: -155px;     
+  }
+  .owl-theme-my-2 .owl-nav .owl-next span{
+    display: block;
+    width: 120px;
+    height: 120px; 
+    font-size: 0; 
+    background-color:#fff;
+    &::before{
+      position: absolute;
+      content: "";
+      display: block;
+      width: 150px;
+      height: 150px;
+      .sprite(@next);
+       margin:auto;
+      top: 0; 
+      left: 0; 
+      bottom: 0; 
+      right: 0;
+    }
+}
+
+.owl-theme-my-2 .owl-nav.disabled + .owl-dots {
+  margin-top: 10px; }
+
+
+.owl-theme-my-2 .owl-dots {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; 
+  position: absolute;
+  bottom: 30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+  .owl-theme-my-2 .owl-dots .owl-dot {
+    display: none;
+    zoom: 1;
+    *display: inline; }
+    .owl-theme-my-2 .owl-dots .owl-dot span {
+      width: 15px;
+      height: 15px;
+      margin: 5px 7px;
+      background: #d9d9d9;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 200ms ease;
+      border-radius: 30px; }
+    .owl-theme-my-2 .owl-dots .owl-dot.active span, .owl-theme-my-2 .owl-dots .owl-dot:hover span {
+      background: #5d257c; }
